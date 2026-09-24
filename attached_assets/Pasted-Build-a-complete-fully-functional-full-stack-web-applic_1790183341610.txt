@@ -1,0 +1,553 @@
+Build a complete, fully functional full-stack web application called:
+
+"Intelligent E-Commerce Recommendation & Customer Analytics System"
+
+This is a college project. I need a REAL WORKING APPLICATION, not a static UI or prototype.
+
+IMPORTANT:
+Every button, form, navigation item, search, filter, login, registration, cart action, wishlist action, checkout, order creation, dashboard metric, recommendation and database operation must work properly.
+
+TECHNOLOGY:
+Use a technology stack that runs completely on Replit without requiring me to install Python or MySQL locally.
+Use Replit's available database solution.
+Keep the code organized, reliable and easy for a student to explain in a viva.
+
+==================================================
+1. CUSTOMER AUTHENTICATION
+==================================================
+
+Create a complete customer authentication system.
+
+Registration:
+- Full name
+- Email
+- Password
+- Confirm password
+- Gender
+- Age
+- City
+
+Requirements:
+- Validate all fields.
+- Email must be unique.
+- Password must be securely hashed.
+- Show proper validation/error messages.
+- After successful registration, create the customer in the database.
+- Allow the customer to log in.
+
+Login:
+- Email
+- Password
+- Remember/login session
+- Logout
+
+After login:
+- Show customer's name in the navigation bar.
+- Customer should remain logged in while navigating.
+- Protect customer-only pages from unauthenticated users.
+- Logout must properly destroy the session.
+
+==================================================
+2. HOME PAGE
+==================================================
+
+Create an attractive modern e-commerce homepage.
+
+Include:
+- Navigation bar
+- Logo/project name
+- Search bar
+- Login/Register buttons when logged out
+- Customer name/profile when logged in
+- Cart count
+- Wishlist count
+- Hero section
+- Featured products
+- Popular products
+- Categories
+- "Recommended For You" section for logged-in customers
+- Footer
+
+Every navigation link must actually work.
+
+==================================================
+3. PRODUCT SYSTEM
+==================================================
+
+Create product listing from the database.
+
+Each product must have:
+- Product ID
+- Product name
+- Category
+- Description
+- Price
+- Stock
+- Rating
+- Product image
+
+Features:
+- Search products
+- Filter by category
+- Filter by price
+- Sort by price
+- Sort by rating
+- View product details
+- Show available stock
+- Add to cart
+- Add/remove wishlist
+- Write a review after purchase
+
+Do not hard-code the product listing into HTML.
+Products must come from the database.
+
+==================================================
+4. PRODUCT DETAILS
+==================================================
+
+When a user clicks a product:
+
+Show:
+- Product image
+- Product name
+- Description
+- Category
+- Price
+- Rating
+- Available stock
+- Quantity selector
+- Add to cart
+- Add/remove wishlist
+- Customer reviews
+
+Record a customer activity when appropriate, such as:
+- product_view
+- wishlist
+- cart
+- purchase
+
+==================================================
+5. SHOPPING CART
+==================================================
+
+Create a fully working cart.
+
+Features:
+- Add product
+- Increase quantity
+- Decrease quantity
+- Remove product
+- Display subtotal
+- Display total
+- Prevent quantity from exceeding available stock
+- Cart should persist for the logged-in customer
+- Empty cart message
+
+Do not allow checkout if the cart is empty.
+
+==================================================
+6. WISHLIST
+==================================================
+
+Create a working wishlist.
+
+Features:
+- Add product
+- Remove product
+- Display wishlist
+- Move wishlist product to cart
+- Prevent duplicate wishlist entries
+
+Save wishlist data in the database.
+
+==================================================
+7. CHECKOUT
+==================================================
+
+Create a working checkout page.
+
+Display:
+- Customer information
+- Order items
+- Quantity
+- Price
+- Total amount
+
+Payment method:
+- Cash on Delivery
+- UPI
+- Card
+
+For this college project, payment does NOT need to process real money.
+
+Create a payment record with:
+- payment method
+- payment status
+- payment date
+
+When checkout is confirmed:
+1. Create order.
+2. Create order_items.
+3. Calculate total amount.
+4. Reduce product stock.
+5. Create payment record.
+6. Clear the cart.
+7. Record purchase activity.
+8. Show successful order confirmation.
+
+Use database transactions so incomplete orders do not leave inconsistent data.
+
+==================================================
+8. ORDER HISTORY
+==================================================
+
+Create a customer "My Orders" page.
+
+Show:
+- Order ID
+- Order date
+- Products
+- Quantity
+- Total amount
+- Payment method
+- Payment status
+- Order status
+
+Customers must only see their own orders.
+
+==================================================
+9. CUSTOMER PROFILE
+==================================================
+
+Create a working profile page.
+
+Show:
+- Name
+- Email
+- Gender
+- Age
+- City
+
+Allow customer to update profile information.
+
+==================================================
+10. REVIEWS
+==================================================
+
+Customers can review products they purchased.
+
+Fields:
+- Rating 1-5
+- Review text
+
+Requirements:
+- Only logged-in customers can review.
+- Preferably allow reviews only for purchased products.
+- Save reviews in database.
+- Display reviews on product details.
+- Update product rating based on reviews.
+
+==================================================
+11. AI RECOMMENDATION SYSTEM
+==================================================
+
+Implement an actual recommendation feature.
+
+Use a simple content-based recommendation algorithm using:
+- Product name
+- Category
+- Description
+
+Use TF-IDF and cosine similarity if supported by the selected stack.
+
+Also use customer activity where possible.
+
+Recommendation logic should consider:
+- Products viewed
+- Wishlist products
+- Purchased products
+
+Display:
+"Recommended For You"
+
+Each recommendation should show:
+- Product
+- Recommendation score
+
+Save generated recommendations in the recommendations table.
+
+If a new customer has no activity, show popular/high-rated products as fallback recommendations.
+
+Do not create fake recommendation results just for display.
+
+==================================================
+12. CUSTOMER ANALYTICS
+==================================================
+
+Track customer behavior:
+- Product views
+- Wishlist additions
+- Cart activity
+- Purchases
+
+Create analytics such as:
+- Total spending
+- Number of orders
+- Most purchased category
+- Most viewed products
+- Wishlist count
+- Purchase frequency
+
+==================================================
+13. ADMIN DASHBOARD
+==================================================
+
+Create an admin dashboard.
+
+Include working database-driven metrics:
+
+- Total customers
+- Total products
+- Total orders
+- Total revenue
+- Average order value
+
+Charts:
+- Monthly revenue
+- Category-wise revenue
+- Top-selling products
+- Order status distribution
+- Customer segments
+
+Add tables for:
+- Recent orders
+- Top products
+- Customers
+
+Dashboard values must come from database queries.
+
+==================================================
+14. CUSTOMER SEGMENTATION
+==================================================
+
+Implement customer segmentation using available purchase data.
+
+Use RFM concepts:
+- Recency
+- Frequency
+- Monetary value
+
+If practical, use a simple ML clustering approach such as K-Means.
+
+Display descriptive segments such as:
+- New Customer
+- Regular Customer
+- High Value Customer
+- Inactive Customer
+
+Show the segment on the admin analytics dashboard.
+
+==================================================
+15. DATABASE
+==================================================
+
+Create a normalized relational database.
+
+Tables:
+
+customers
+categories
+products
+orders
+order_items
+payments
+reviews
+customer_activity
+recommendations
+wishlist
+
+Use:
+- Primary keys
+- Foreign keys
+- UNIQUE constraints
+- NOT NULL constraints
+- CHECK constraints where supported
+- Indexes where useful
+
+Relationships must be correctly implemented.
+
+==================================================
+16. SQL REQUIREMENTS FOR COLLEGE RUBRIC
+==================================================
+
+Include a separate SQL/documentation section containing:
+
+- CREATE TABLE statements
+- INSERT statements
+- SELECT queries
+- JOIN queries
+- GROUP BY queries
+- Aggregate functions
+- Subqueries
+- Stored procedure
+- Triggers
+- Analytics queries
+
+Include examples for:
+- Top-selling products
+- Highest-spending customers
+- Category revenue
+- Average product ratings
+- Monthly revenue
+- Customer order history
+
+Create a stored procedure for retrieving customer orders.
+
+Create suitable triggers, such as:
+- Stock reduction after order item creation
+- Order total calculation
+
+Make sure the SQL is syntactically valid for the selected database.
+
+==================================================
+17. NORMALIZATION DOCUMENTATION
+==================================================
+
+Include documentation explaining:
+- 1NF
+- 2NF
+- 3NF
+
+Explain how the final tables satisfy normalization.
+
+==================================================
+18. ER DIAGRAM
+==================================================
+
+Include an ER diagram/documentation showing:
+
+Customers -> Orders
+Categories -> Products
+Orders -> Order Items
+Products -> Order Items
+Orders -> Payments
+Customers -> Reviews
+Products -> Reviews
+Customers -> Customer Activity
+Products -> Customer Activity
+Customers -> Recommendations
+Products -> Recommendations
+Customers -> Wishlist
+Products -> Wishlist
+
+==================================================
+19. UI DESIGN
+==================================================
+
+Make the website look like a professional modern e-commerce application.
+
+Use:
+- Responsive layout
+- Attractive product cards
+- Smooth hover effects
+- Modern navigation
+- Clean forms
+- Good spacing
+- Professional dashboard
+- Responsive mobile design
+- Icons
+- Toast notifications
+- Loading states
+- Empty states
+- Error messages
+- Success messages
+
+Do not sacrifice functionality for appearance.
+
+==================================================
+20. SECURITY
+==================================================
+
+Implement:
+- Password hashing
+- Session-based authentication
+- Protected routes
+- Input validation
+- Parameterized database queries
+- No plain-text passwords
+- No hard-coded secrets
+
+==================================================
+21. DEMO DATA
+==================================================
+
+Create realistic sample data:
+- At least 20 products
+- 5 categories
+- Several customers
+- Orders
+- Order items
+- Reviews
+- Customer activities
+- Wishlist records
+
+The application should look populated immediately after setup.
+
+==================================================
+22. TESTING
+==================================================
+
+Before considering the project complete, test:
+
+- Registration
+- Login
+- Logout
+- Product search
+- Category filter
+- Product details
+- Add to cart
+- Cart quantity
+- Remove cart item
+- Wishlist
+- Checkout
+- Order creation
+- Stock update
+- Payment record
+- Order history
+- Reviews
+- Recommendations
+- Customer analytics
+- Admin dashboard
+
+Fix errors rather than leaving TODO placeholders.
+
+==================================================
+23. COLLEGE RUBRIC
+==================================================
+
+The final project must clearly demonstrate:
+
+ER Diagram & Relational Schema - 10 marks
+Normalization - 10 marks
+SQL Implementation - 20 marks
+Advanced SQL / Procedures / Triggers - 15 marks
+Data Analytics - 10 marks
+AI/ML Component - 15 marks
+Dashboard & Visualization - 5 marks
+Documentation & Presentation - 5 marks
+
+Create a README that maps each feature to the corresponding rubric section.
+
+IMPORTANT FINAL REQUIREMENT:
+
+I need a working college project that I can demonstrate live.
+
+Do NOT give me a static HTML mockup.
+
+Do NOT leave buttons non-functional.
+
+Do NOT use fake dashboard numbers when real database data is available.
+
+Do NOT leave major features as TODOs.
+
+Build, run and test the application in the Replit environment and fix runtime errors you encounter.

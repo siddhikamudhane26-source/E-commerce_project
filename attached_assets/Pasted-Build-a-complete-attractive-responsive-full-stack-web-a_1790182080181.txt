@@ -1,0 +1,103 @@
+Build a complete, attractive, responsive full-stack web application called:
+
+"Intelligent E-Commerce Recommendation & Customer Analytics System"
+
+This is a college project and must demonstrate these requirements:
+
+1. E-commerce website
+- Modern professional UI
+- Home page with hero section
+- Product listing
+- Product details
+- Search and category filtering
+- Shopping cart
+- Wishlist
+- Checkout
+- Customer login/register
+- Order history
+- Customer profile
+
+2. AI Recommendation System
+- Recommend products based on the user's viewed, liked, and purchased products.
+- Use a simple content-based recommendation approach.
+- Display a "Recommended For You" section with recommendation scores.
+- Make the recommendation feature actually functional, not just decorative.
+
+3. Customer Analytics
+- Customer activity tracking
+- Orders and purchase history
+- Customer segmentation
+- Revenue and spending analysis
+- Product popularity analysis
+
+4. Admin Dashboard
+Display:
+- Total customers
+- Total products
+- Total orders
+- Total revenue
+- Average order value
+- Top-selling products
+- Category-wise revenue
+- Monthly revenue
+- Customer segments
+- Order status distribution
+
+Use interactive charts.
+
+5. Database
+Create a relational database with these tables:
+- customers
+- categories
+- products
+- orders
+- order_items
+- payments
+- reviews
+- customer_activity
+- recommendations
+- wishlist
+
+Use proper primary keys, foreign keys, constraints and indexes.
+
+6. SQL requirements
+Include:
+- CREATE TABLE statements
+- INSERT sample data
+- SELECT queries
+- JOIN queries
+- GROUP BY queries
+- aggregate functions
+- subqueries
+- stored procedures
+- triggers
+- useful analytics queries
+
+7. Normalization
+Design the database according to 1NF, 2NF and 3NF.
+
+8. UI
+Make it look like a real modern e-commerce website.
+Use:
+- responsive design
+- attractive navigation bar
+- product cards
+- smooth hover effects
+- clean typography
+- professional dashboard
+- mobile responsive layout
+- appropriate icons
+- modern buttons and forms
+
+9. Technical requirements
+Use a simple architecture that can run entirely on Replit without requiring me to install Python or MySQL locally.
+
+Keep the project organized and make every major feature functional.
+
+IMPORTANT:
+- Do not create only a static frontend.
+- Create working backend/database functionality.
+- Add realistic sample products and customers.
+- Make the website presentation-ready for a college demonstration.
+- Include a README explaining how the system works and how each college rubric requirement is satisfied.
+- Keep the implementation suitable for a student project and easy to explain during viva.

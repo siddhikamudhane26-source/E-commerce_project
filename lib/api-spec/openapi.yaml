@@ -1,0 +1,532 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: storefront
+    description: Storefront catalog and customer actions
+  - name: analytics
+    description: Customer and business analytics
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [storefront]
+      summary: List product categories
+      responses:
+        "200":
+          description: Product categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+  /products:
+    get:
+      operationId: listProducts
+      tags: [storefront]
+      summary: Browse products
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [featured, price-low, price-high, rating, popular, newest]
+            default: featured
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 24
+            minimum: 1
+            maximum: 50
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+            minimum: 0
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+            minimum: 0
+      responses:
+        "200":
+          description: Products matching the filters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+  /products/{id}:
+    get:
+      operationId: getProduct
+      tags: [storefront]
+      summary: Get product details
+      parameters:
+        - $ref: "#/components/parameters/ProductId"
+      responses:
+        "200":
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Product not found
+  /products/{id}/recommendations:
+    get:
+      operationId: getProductRecommendations
+      tags: [storefront]
+      summary: Get content-based product recommendations
+      parameters:
+        - $ref: "#/components/parameters/ProductId"
+      responses:
+        "200":
+          description: Ranked recommendations with scores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Recommendation"
+  /products/{id}/reviews:
+    get:
+      operationId: listProductReviews
+      tags: [storefront]
+      summary: List reviews for a product
+      parameters:
+        - $ref: "#/components/parameters/ProductId"
+      responses:
+        "200":
+          description: Product reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+  /customers/{id}:
+    get:
+      operationId: getCustomerProfile
+      tags: [storefront]
+      summary: Get a customer profile
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      responses:
+        "200":
+          description: Customer profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerProfile"
+        "404":
+          description: Customer not found
+    patch:
+      operationId: updateCustomerProfile
+      tags: [storefront]
+      summary: Update customer profile
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfileInput"
+      responses:
+        "200":
+          description: Updated customer profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerProfile"
+  /customers/{id}/wishlist:
+    get:
+      operationId: getWishlist
+      tags: [storefront]
+      summary: Get customer wishlist
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      responses:
+        "200":
+          description: Wishlist products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+  /wishlist:
+    post:
+      operationId: toggleWishlist
+      tags: [storefront]
+      summary: Add or remove a product from a wishlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WishlistInput"
+      responses:
+        "200":
+          description: Wishlist result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WishlistResult"
+  /orders:
+    get:
+      operationId: listOrders
+      tags: [storefront]
+      summary: List orders for a customer
+      parameters:
+        - name: customerId
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        "200":
+          description: Customer order history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+    post:
+      operationId: createOrder
+      tags: [storefront]
+      summary: Create an order from cart items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderInput"
+      responses:
+        "201":
+          description: Created order
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+  /reviews:
+    post:
+      operationId: createReview
+      tags: [storefront]
+      summary: Create or update a purchased-product review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "201":
+          description: Saved review
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+  /activity:
+    post:
+      operationId: trackActivity
+      tags: [storefront]
+      summary: Track customer product activity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ActivityInput"
+      responses:
+        "201":
+          description: Activity event accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivityEvent"
+  /analytics/dashboard:
+    get:
+      operationId: getAnalyticsDashboard
+      tags: [analytics]
+      summary: Get storefront analytics
+      responses:
+        "200":
+          description: Analytics dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnalyticsDashboard"
+  /analytics/activity:
+    get:
+      operationId: getRecentActivity
+      tags: [analytics]
+      summary: Get recent customer activity
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 8
+            minimum: 1
+            maximum: 30
+      responses:
+        "200":
+          description: Recent activity
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ActivityEvent"
+components:
+  parameters:
+    ProductId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    CustomerId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    Category:
+      type: object
+      required: [id, name, slug, productCount]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        slug: { type: string }
+        productCount: { type: integer }
+    Product:
+      type: object
+      required: [id, name, slug, description, price, category, categorySlug, imageUrl, rating, reviewCount, stock, tags, badge]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        slug: { type: string }
+        description: { type: string }
+        price: { type: number }
+        compareAtPrice: { type: ["number", "null"] }
+        category: { type: string }
+        categorySlug: { type: string }
+        imageUrl: { type: string }
+        rating: { type: number }
+        reviewCount: { type: integer }
+        stock: { type: integer }
+        tags:
+          type: array
+          items: { type: string }
+        badge: { type: ["string", "null"] }
+    Recommendation:
+      allOf:
+        - $ref: "#/components/schemas/Product"
+        - type: object
+          required: [score, reason]
+          properties:
+            score: { type: number }
+            reason: { type: string }
+    CustomerProfile:
+      type: object
+      required: [id, name, email, gender, age, city, segment, totalSpent, orderCount, wishlistCount, joinedAt]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        email: { type: string }
+        gender: { type: ["string", "null"] }
+        age: { type: ["integer", "null"] }
+        city: { type: ["string", "null"] }
+        segment: { type: string }
+        totalSpent: { type: number }
+        orderCount: { type: integer }
+        wishlistCount: { type: integer }
+        joinedAt: { type: string, format: date-time }
+    ProfileInput:
+      type: object
+      required: [name, email, gender, age, city]
+      properties:
+        name: { type: string, minLength: 2 }
+        email: { type: string, format: email }
+        gender: { type: ["string", "null"] }
+        age: { type: ["integer", "null"], minimum: 13, maximum: 120 }
+        city: { type: ["string", "null"] }
+    WishlistInput:
+      type: object
+      required: [customerId, productId]
+      properties:
+        customerId: { type: integer }
+        productId: { type: integer }
+    WishlistResult:
+      type: object
+      required: [saved, productId]
+      properties:
+        saved: { type: boolean }
+        productId: { type: integer }
+    OrderItemInput:
+      type: object
+      required: [productId, quantity]
+      properties:
+        productId: { type: integer }
+        quantity: { type: integer, minimum: 1 }
+    OrderInput:
+      type: object
+      required: [customerId, items, paymentMethod]
+      properties:
+        customerId: { type: integer }
+        items:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/OrderItemInput"
+        paymentMethod:
+          type: string
+          enum: [cod, upi, card]
+    OrderItem:
+      type: object
+      required: [productId, productName, quantity, unitPrice, lineTotal]
+      properties:
+        productId: { type: integer }
+        productName: { type: string }
+        quantity: { type: integer }
+        unitPrice: { type: number }
+        lineTotal: { type: number }
+    Order:
+      type: object
+      required: [id, customerId, status, total, paymentMethod, paymentStatus, placedAt, items]
+      properties:
+        id: { type: integer }
+        customerId: { type: integer }
+        status: { type: string }
+        total: { type: number }
+        paymentMethod: { type: string }
+        paymentStatus: { type: string }
+        placedAt: { type: string, format: date-time }
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderItem"
+    ActivityInput:
+      type: object
+      required: [customerId, productId, type]
+      properties:
+        customerId: { type: integer }
+        productId: { type: integer }
+        type:
+          type: string
+          enum: [view, like, cart, purchase]
+    ReviewInput:
+      type: object
+      required: [customerId, productId, rating, body]
+      properties:
+        customerId: { type: integer }
+        productId: { type: integer }
+        rating: { type: integer, minimum: 1, maximum: 5 }
+        body: { type: string, minLength: 3, maxLength: 1000 }
+    Review:
+      type: object
+      required: [id, customerId, customerName, productId, rating, body, createdAt]
+      properties:
+        id: { type: integer }
+        customerId: { type: integer }
+        customerName: { type: string }
+        productId: { type: integer }
+        rating: { type: integer }
+        body: { type: string }
+        createdAt: { type: string, format: date-time }
+    ActivityEvent:
+      type: object
+      required: [id, customerId, customerName, productId, productName, type, occurredAt]
+      properties:
+        id: { type: integer }
+        customerId: { type: integer }
+        customerName: { type: string }
+        productId: { type: integer }
+        productName: { type: string }
+        type: { type: string }
+        occurredAt: { type: string, format: date-time }
+    Metric:
+      type: object
+      required: [label, value, change]
+      properties:
+        label: { type: string }
+        value: { type: number }
+        change: { type: number }
+    ChartPoint:
+      type: object
+      required: [label, value]
+      properties:
+        label: { type: string }
+        value: { type: number }
+    AnalyticsDashboard:
+      type: object
+      required: [metrics, topProducts, categoryRevenue, monthlyRevenue, segments, orderStatuses]
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: "#/components/schemas/Metric"
+        topProducts:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChartPoint"
+        categoryRevenue:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChartPoint"
+        monthlyRevenue:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChartPoint"
+        segments:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChartPoint"
+        orderStatuses:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChartPoint"
+

@@ -1,0 +1,3 @@
+- [OpenAPI codegen naming](openapi-codegen.md) — avoid combining path and query parameters when Orval would emit a duplicate Params export.
+- [Schema-change verification](schema-change-verification.md) — Drizzle schema edits require a development push before restarting the API.
+- [Clerk customer bridge](clerk-customer-bridge.md) — link Clerk users to existing customer rows server-side; never trust client-supplied customer IDs for ownership.

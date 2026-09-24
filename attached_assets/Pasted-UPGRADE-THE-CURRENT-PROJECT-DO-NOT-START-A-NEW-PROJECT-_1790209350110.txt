@@ -1,0 +1,783 @@
+UPGRADE THE CURRENT PROJECT — DO NOT START A NEW PROJECT.
+
+I need this existing project to become a COMPLETE, WORKING, DEPLOYMENT-READY college project.
+
+Project name:
+Intelligent E-Commerce Recommendation & Customer Analytics System
+
+IMPORTANT:
+Do not make a static/demo website.
+Every major button, form, search, filter, login, cart, wishlist, checkout, order, recommendation, analytics and dashboard feature must work.
+
+==================================================
+1. PRODUCT CATALOG — IMPORTANT
+==================================================
+
+Create a realistic product catalog with AT LEAST 6 PRODUCTS IN EACH CATEGORY.
+
+Categories:
+
+1. Electronics
+2. Fashion
+3. Books
+4. Beauty
+5. Home & Living
+
+Minimum:
+6 products × 5 categories = 30 products.
+
+Preferably create 8 products per category = 40 products if practical.
+
+Every product must have:
+
+- Unique product ID
+- Product name
+- Category
+- Description
+- Price
+- Discount if applicable
+- Stock quantity
+- Rating
+- Number of reviews
+- Product image
+- Created date
+
+Use realistic product names.
+
+ELECTRONICS examples:
+- Wireless Headphones
+- Smart Watch
+- Bluetooth Speaker
+- Wireless Mouse
+- Mechanical Keyboard
+- Power Bank
+- USB-C Hub
+- Smart LED Bulb
+
+FASHION examples:
+- Denim Jacket
+- Oversized T-Shirt
+- Hoodie
+- Casual Shirt
+- Sneakers
+- Jeans
+- Handbag
+- Backpack
+
+BOOKS examples:
+- Python Programming
+- Data Structures & Algorithms
+- Java Programming
+- Database Management Systems
+- Operating Systems
+- Computer Networks
+- Artificial Intelligence
+- Machine Learning
+
+BEAUTY examples:
+- Face Wash
+- Moisturizer
+- Sunscreen
+- Shampoo
+- Conditioner
+- Lip Balm
+- Body Lotion
+- Hair Serum
+
+HOME & LIVING examples:
+- Table Lamp
+- Study Chair
+- Water Bottle
+- Bedsheet
+- Cushion Set
+- Wall Clock
+- Desk Organizer
+- Storage Box
+
+Do not show placeholder products such as:
+"Product 1", "Product 2", etc.
+
+==================================================
+2. SEARCH MUST ACTUALLY WORK
+==================================================
+
+Create a global product search.
+
+When the user searches for:
+
+"headphones"
+
+show relevant headphone products.
+
+When the user searches:
+
+"book"
+
+show relevant books.
+
+When the user searches:
+
+"beauty"
+
+show beauty products.
+
+Search should check:
+- Product name
+- Category
+- Description
+
+Search must update the product results dynamically.
+
+IMPORTANT:
+If 5 or 6 matching products exist, display all matching products rather than showing only one.
+
+Show:
+"X products found"
+
+If nothing matches:
+show a proper "No products found" message and a button to view all products.
+
+Search must work from:
+- Home page
+- Product page
+- Products page
+
+==================================================
+3. CATEGORY FILTER
+==================================================
+
+Create working category filters:
+
+All
+Electronics
+Fashion
+Books
+Beauty
+Home & Living
+
+Clicking a category must display only products from that category.
+
+Every category must contain at least 6 products.
+
+==================================================
+4. SORTING
+==================================================
+
+Add working sorting:
+
+- Price: Low to High
+- Price: High to Low
+- Rating: High to Low
+- Most Popular
+- Newest
+
+==================================================
+5. PRICE FILTER
+==================================================
+
+Add a working price filter/range.
+
+Users should be able to filter products based on price.
+
+Update results without breaking search/category filtering.
+
+Search + category + price + sorting should work together.
+
+==================================================
+6. PRODUCT DETAILS
+==================================================
+
+Every product card must open a real product details page.
+
+Show:
+
+- Large product image
+- Product name
+- Category
+- Description
+- Price
+- Discount
+- Rating
+- Reviews count
+- Stock available
+- Quantity selector
+- Add to Cart
+- Buy Now
+- Add to Wishlist
+
+Prevent users from ordering more than available stock.
+
+==================================================
+7. PRODUCT IMAGES
+==================================================
+
+Every product must have a relevant image.
+
+Do not use broken image links.
+
+Use reliable image sources or locally stored images.
+
+If an image fails to load, display a professional fallback image instead of a broken-image icon.
+
+==================================================
+8. CUSTOMER REGISTRATION
+==================================================
+
+Create a REAL registration system.
+
+Fields:
+
+Name
+Email
+Password
+Confirm Password
+Gender
+Age
+City
+
+Requirements:
+
+- Validate all fields.
+- Email must be unique.
+- Password must be securely hashed.
+- Password confirmation must match.
+- Store customer in database.
+- Show success message.
+- Redirect to login after registration.
+
+==================================================
+9. CUSTOMER LOGIN
+==================================================
+
+Create a REAL login system.
+
+Customer logs in using:
+
+Email
+Password
+
+After successful login:
+
+- Create session.
+- Show customer's name in navbar.
+- Show Profile.
+- Show My Orders.
+- Show Wishlist.
+- Show Cart.
+- Show Logout.
+
+Incorrect login:
+show a proper error message.
+
+Logout must actually destroy the session.
+
+Customer-only pages must require authentication.
+
+==================================================
+10. CUSTOMER PROFILE
+==================================================
+
+Create a working profile page.
+
+Display:
+
+Name
+Email
+Gender
+Age
+City
+Registration date
+
+Allow customer to update editable information.
+
+Save changes to database.
+
+==================================================
+11. CART
+==================================================
+
+Create a completely functional cart.
+
+Features:
+
+- Add product
+- Remove product
+- Increase quantity
+- Decrease quantity
+- Quantity validation
+- Stock validation
+- Subtotal
+- Total
+- Cart item count
+- Empty cart message
+
+Cart must belong to the logged-in customer.
+
+Cart data must persist while navigating.
+
+==================================================
+12. WISHLIST
+==================================================
+
+Create a functional wishlist.
+
+Features:
+
+- Add to wishlist
+- Remove from wishlist
+- Wishlist count
+- View wishlist
+- Move to cart
+
+Do not allow duplicate wishlist items.
+
+Store wishlist data in database.
+
+==================================================
+13. CHECKOUT
+==================================================
+
+Create a functional checkout.
+
+Show:
+
+Customer details
+Order items
+Quantity
+Individual prices
+Subtotal
+Total
+
+Payment methods:
+
+- Cash on Delivery
+- UPI
+- Card
+
+This is a college project, so DO NOT process real payments.
+
+After confirming:
+
+1. Create order.
+2. Create order items.
+3. Calculate total.
+4. Create payment record.
+5. Reduce product stock.
+6. Record customer purchase activity.
+7. Clear cart.
+8. Show order confirmation.
+9. Generate order ID.
+
+Use a database transaction.
+
+==================================================
+14. MY ORDERS
+==================================================
+
+Customer can see ONLY their own orders.
+
+Show:
+
+Order ID
+Date
+Products
+Quantity
+Total
+Payment method
+Payment status
+Order status
+
+Add a View Order button.
+
+==================================================
+15. REVIEWS
+==================================================
+
+Allow customers to submit product reviews.
+
+Rating:
+1–5 stars
+
+Review text.
+
+Only logged-in customers should submit reviews.
+
+Preferably allow reviews only for products they purchased.
+
+Display reviews on product details.
+
+Calculate/display average rating.
+
+==================================================
+16. CUSTOMER ACTIVITY
+==================================================
+
+Track:
+
+- Product view
+- Search
+- Wishlist
+- Cart
+- Purchase
+
+Save useful activities in customer_activity.
+
+==================================================
+17. AI RECOMMENDATION
+==================================================
+
+Create an actual recommendation feature.
+
+Use product:
+
+Name
+Category
+Description
+
+Implement content-based recommendation using TF-IDF/cosine similarity if the environment supports it.
+
+Use customer activity to personalize recommendations.
+
+Show:
+
+"Recommended For You"
+
+for logged-in users.
+
+Recommendation priority:
+
+1. Purchased/viewed/wishlisted related products
+2. Similar products
+3. Popular/high-rated products as fallback
+
+Display at least 5 recommendations whenever enough products exist.
+
+Show recommendation score.
+
+Save recommendation results in recommendations table.
+
+Do NOT simply randomly display products and call them AI recommendations.
+
+==================================================
+18. ADMIN DASHBOARD
+==================================================
+
+Create a separate admin dashboard.
+
+Dashboard must use REAL database queries.
+
+Display:
+
+Total Customers
+Total Products
+Total Orders
+Total Revenue
+Average Order Value
+
+Charts:
+
+Monthly Revenue
+Category Revenue
+Top Selling Products
+Order Status
+Customer Segments
+
+Tables:
+
+Recent Orders
+Top Products
+Customers
+
+Every number must be calculated from the database.
+
+==================================================
+19. CUSTOMER ANALYTICS
+==================================================
+
+For each customer calculate:
+
+Total orders
+Total spending
+Average order value
+Wishlist count
+Most purchased category
+Recent activity
+
+Create customer segmentation using RFM concepts:
+
+Recency
+Frequency
+Monetary
+
+If ML libraries are available, use K-Means clustering.
+
+Otherwise implement a transparent rule-based RFM segmentation so the feature still works.
+
+==================================================
+20. DATABASE
+==================================================
+
+Use a proper relational database.
+
+Tables:
+
+customers
+categories
+products
+orders
+order_items
+payments
+reviews
+customer_activity
+recommendations
+wishlist
+
+Use:
+
+Primary keys
+Foreign keys
+Unique constraints
+Not-null constraints
+Indexes
+Appropriate validation
+
+Avoid duplicated data.
+
+Database should satisfy 1NF, 2NF and 3NF.
+
+==================================================
+21. SQL / ADVANCED SQL
+==================================================
+
+Include working SQL examples/documentation for:
+
+- SELECT
+- WHERE
+- JOIN
+- INNER JOIN
+- LEFT JOIN
+- GROUP BY
+- HAVING
+- ORDER BY
+- Aggregate functions
+- Subqueries
+- Top-selling products
+- Highest-spending customers
+- Category revenue
+- Average ratings
+- Monthly revenue
+
+Include a stored procedure:
+
+GetCustomerOrders(customer_id)
+
+Include triggers for:
+
+- Stock reduction
+- Order total calculation
+
+Make sure these are valid for the selected database.
+
+==================================================
+22. ER DIAGRAM / DOCUMENTATION
+==================================================
+
+Create documentation for the ER diagram and relationships.
+
+Document:
+
+customers → orders
+categories → products
+orders → order_items
+products → order_items
+orders → payments
+customers → reviews
+products → reviews
+customers → customer_activity
+products → customer_activity
+customers → recommendations
+products → recommendations
+customers → wishlist
+products → wishlist
+
+==================================================
+23. NAVIGATION
+==================================================
+
+Navbar must work.
+
+Logged out:
+
+Home
+Products
+Categories
+Login
+Register
+Cart
+
+Logged in:
+
+Home
+Products
+Categories
+Recommended
+Wishlist
+Cart
+My Orders
+Profile
+Logout
+
+Admin:
+
+Dashboard
+Products
+Orders
+Customers
+Analytics
+Logout
+
+No dead navigation links.
+
+==================================================
+24. ERROR HANDLING
+==================================================
+
+Handle:
+
+Invalid login
+Duplicate registration
+Invalid form data
+Empty cart
+Out of stock
+Invalid product
+Database errors
+Unauthorized pages
+Missing products
+Failed operations
+
+Show user-friendly messages.
+
+Do not expose database passwords or technical stack traces to customers.
+
+==================================================
+25. UI
+==================================================
+
+Make it visually attractive and professional.
+
+Use:
+
+Modern e-commerce layout
+Responsive design
+Product cards
+Professional navbar
+Hero section
+Search bar
+Category cards
+Interactive buttons
+Hover effects
+Toast notifications
+Loading indicators
+Empty states
+Error states
+Professional dashboard
+Responsive mobile layout
+
+Use consistent styling throughout the entire application.
+
+==================================================
+26. SAMPLE DATA
+==================================================
+
+The application must start with realistic sample data.
+
+Minimum:
+
+30 products
+5 categories
+Several customers
+Several orders
+Order items
+Reviews
+Wishlist entries
+Customer activity
+Recommendation data
+
+Make sure the dashboard has enough data to display meaningful charts.
+
+==================================================
+27. SECURITY
+==================================================
+
+Implement:
+
+Password hashing
+Sessions
+Authentication
+Protected routes
+Parameterized queries
+Input validation
+No plaintext passwords
+No exposed secrets
+
+==================================================
+28. DEPLOYMENT
+==================================================
+
+Prepare the application for Replit deployment.
+
+Requirements:
+
+- Application starts successfully.
+- No missing dependencies.
+- No hard-coded local file paths.
+- Environment variables for secrets.
+- Database connection configured correctly.
+- Production-compatible configuration.
+- Proper start command.
+- README with setup instructions.
+
+Before saying the project is finished:
+
+RUN THE APPLICATION.
+
+TEST ALL MAJOR FEATURES.
+
+FIX ALL ERRORS YOU FIND.
+
+Do not leave TODOs or fake buttons.
+
+==================================================
+29. FINAL COLLEGE RUBRIC
+==================================================
+
+Make sure the project visibly demonstrates:
+
+ER Diagram & Relational Schema — 10
+Normalization — 10
+SQL Implementation — 20
+Advanced SQL / Procedures / Triggers — 15
+Data Analytics — 10
+AI/ML Component — 15
+Dashboard & Visualization — 5
+Documentation & Presentation — 5
+
+Create a README section called:
+
+"College Project Rubric"
+
+and explain exactly where each requirement is implemented.
+
+FINAL REQUIREMENT:
+
+This must be a working, presentation-ready e-commerce application.
+
+Do not just create the frontend.
+
+Do not use fake buttons.
+
+Do not leave incomplete features.
+
+Do not show only one product when multiple matching products exist.
+
+Every search/category must be able to show at least 5–6 products where matching products are available.

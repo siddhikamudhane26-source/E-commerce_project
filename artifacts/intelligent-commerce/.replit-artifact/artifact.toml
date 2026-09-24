@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Intelligent Commerce"
+description = "A presentation-ready e-commerce storefront and customer analytics system for a college project, combining shopping, recommendations, customer activity insights, and an admin dashboard."
+version = "1.0.0"
+id = "artifacts/intelligent-commerce"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21060
+
+[services.development]
+run = "pnpm --filter @workspace/intelligent-commerce run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/intelligent-commerce", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/intelligent-commerce/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21060"
+BASE_PATH = "/"

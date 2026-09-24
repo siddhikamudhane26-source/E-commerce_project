@@ -1,0 +1,89 @@
+IMPORTANT UPDATE — DO NOT CHANGE EXISTING PRODUCT DATA OR EXISTING FEATURES.
+
+Keep the entire current project exactly as it is.
+
+DO NOT modify:
+- Product names
+- Product prices
+- Product descriptions
+- Product images
+- Product categories
+- Product ratings
+- Product stock
+- Product search
+- Product filters
+- Product sorting
+- Product details
+- Cart functionality
+- Wishlist functionality
+- Checkout
+- Orders
+- Reviews
+- AI recommendations
+- Analytics
+- Dashboard
+- Database product records
+- Existing UI/design
+
+ONLY modify the LOGIN / LOGOUT / CUSTOMER SESSION SYSTEM.
+
+Required behavior:
+
+1. When logged out:
+Show Login and Register in the navbar.
+
+2. Customer registration:
+Allow a new customer to create an account using the existing customer database.
+
+3. Customer login:
+Allow any registered customer to log in using their own email and password.
+
+4. When logged in:
+Hide Login/Register and show:
+- Customer name
+- Profile
+- My Orders
+- Wishlist
+- Cart
+- Logout
+
+5. Logout:
+When the customer clicks Logout:
+- Destroy their session.
+- Return to the home page.
+- Show Login/Register again.
+
+6. Multiple users:
+User A can log out and User B can log in.
+
+User B must see ONLY User B's:
+- Profile
+- Cart
+- Wishlist
+- Orders
+- Customer activity
+- Recommendations
+
+User A's information must never appear for User B.
+
+7. Protected pages:
+Unauthenticated users must be redirected to Login when accessing customer-only pages.
+
+8. Admin:
+Keep the existing admin functionality unchanged.
+Normal customers must not access admin pages.
+
+9. IMPORTANT:
+Do not recreate, replace, reset, delete or modify the existing product database/data.
+
+Do not change existing product information.
+
+Do not change existing functionality except what is necessary for login/logout and user session handling.
+
+10. Before finishing:
+Test:
+Register → Login → Logout → Login with another customer → Logout → Login with first customer again.
+
+Fix any authentication/session errors you find.
+
+Keep the rest of the project exactly as it currently works.
